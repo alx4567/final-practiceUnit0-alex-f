@@ -1,3 +1,5 @@
+const input = require('readline-sync'); // adding readline to get user input (Values, Data Types and Operations)
+
 /* PATIENT PROFILES
 
 create Patient Array with objects for each patient;
@@ -50,7 +52,9 @@ else
     
             
 */
-const input = require('readline-sync'); // adding readline to get user input (Values, Data Types and Operations)
+
+
+
 
 let patients = [
     {
@@ -153,10 +157,60 @@ else
     readline "(Name of food) not found. Do you want to add dog food data? "
     if "yes" 
         dietCal = readline "How many kcal/mil for the diet? "
-        check if dietCal is a number
-            if not - dietCal = readline "kcal/mil must be a number. Please re-enter data: "
-        log new brand (brand: foodBrand, diet: dietName, kcal/mil: dietCal)
+        while loop (check if dietCal is not a number)
+            dietCal = readline "kcal/mil must be a number. Please re-enter data: "
+        log new brand (brand: foodBrand, diet: dietName, kcal: dietCal)
         print new brand/diet
     else
         log "Have a nice day."
+*/
+
+let diets = [
+    { brand: "hills", diet: "puppy chicken flavor", kcals: 405 },
+    { brand: "purina", diet: "adult small breed", kcals: 320 }
+]; // array to store diet (building arrays and building objects);
+
+let foodExists = false; // values, data types, and operations
+
+let foodBrand = input.question("Food Brand: "); // get brand name from user (values, data types, and operations)
+let dietName = input.question("Diet Name: "); // get diet name from user (values, data types, and operations)
+
+for (let food of diets) {
+    // if brand and diet are in diets arrays log the data, otherwise check if user want to add new food profile
+    if (food.brand === foodBrand.toLowerCase() && food.diet === dietName.toLowerCase()) {
+        foodExists = true;
+        console.log(food);
+    } 
+}
+    
+if (!foodExists) {
+    let addFood = input.question("Food not found. Would you like to add it to the database? (yes or no) ").toLowerCase();
+    while (addFood !== "yes" && addFood !== "no" ){
+        addFood = input.question("Please enter yes or no. Do you want to add food to database? ").toLowerCase(); // values, data types, and operations
+    } // checks if answer is yes or no (control structure and logic - while loops)
+
+    if (addFood === "yes") {
+        let newCals = Number(input.question("What are the kcal/cup? ")); // values, data types, and operations
+        while (!Number(newCals)) {
+            newCals = input.question("kcal/cup must be a number. What are the kcal/cup? "); // values, data types, and operations
+        } // if answer is not a number asks user for new input (control structure and logic - while loops)
+        
+        diets.push({brand: foodBrand.toLowerCase(), diet: dietName.toLowerCase(), kcals: newCals}); // create new food object to the end of diets array (using arrays and creating objects)
+        
+        console.log(`You have successfully added ${foodBrand} ${dietName}`); // (stringing characters together)
+        console.log(diets[diets.length - 1]); // logs added diet (using arrays) 
+    } else {
+        console.log("Food not added."); // stringing characters togethers
+    }
+
+    
+    
+}
+
+console.log(diets); // lists all diets
+
+
+
+/* CALCULATORS
+
 */

@@ -77,7 +77,6 @@ let patients = [
     }
 ]; // create array for patients (Building Arrays)
 
-/* --------------
 
 let patientName = input.question("Name of patient: "); // gets patient name from user (Values, Data Types and Operations)
 let patientExists = false; // (Values, Data Types, and Operations)
@@ -152,7 +151,6 @@ patientExists = false; // returns patientExists back to false for new entry
 
 console.log(patients); // logs patients array
 
------------- */
 
 
 /* DOG FOOD PROFILE
@@ -176,9 +174,6 @@ else
         log "Have a nice day."
 */
 
-
-
-/* --------------
 
 
 console.log("\n\n NEW FEATURE \n\n"); // spacer for new feature
@@ -228,7 +223,8 @@ if (!foodExists) {
 
 console.log(diets); // lists all diets
 
---------- */
+
+
 
 /* 
     Resting Energy Requirement (RER) Calculator = 70 * (patient weight)^.75 = _____ kcal/day
@@ -254,7 +250,6 @@ console.log("\n\n NEW FEATURE \n\n"); // spacer for new feature
 let calcWeight;
 let newRer;
 
-/* ---------
 console.log("RER Calculator: List of Patients");
 for ( i = 0; i <= patients.length; i++ ) {
     if (patients[i]) {
@@ -299,7 +294,6 @@ if (calcPatient) {
     console.log(`RER: ${newRer} kcal/day`); // log newRer (Values, Data Type, and Operations) (stringing characters together) 
 }
 
-------------/
 
 /* 
     Refeeding Calculator = ((user input percentage) * RER) / 24 = ____ mil/hr
@@ -327,7 +321,6 @@ if (calcPatient) {
 */
 
 
-/* -----------
 
 console.log("\n\n NEW FEATURE \n\n"); // spacer for new feature
 
@@ -382,8 +375,6 @@ if (calcPatient) {
     console.log(`Patient's Reffed: ${newRefeed} mil/hr`); // logs new refeed if patient doesn't exist
 }
 
---------- */
-
 
 /* Export Patient Profile
     display patients
@@ -394,14 +385,13 @@ if (calcPatient) {
 console.log("\n\n NEW FEATURE \n\n"); // spacer for new feature
 
 
-let currentPatient; // delete this
 
 console.log("List of Patients:");
 for ( i = 0; i < patients.length; i++ ) {
      console.log(`${i + 1}. ${patients[i].id}`); // logs index and id of each dog (stringing characters together)
 } // Loops through each patient in patients array (control structure and logic)
 
-let patientIndex = Number(input.question("Enter number of paitent: ")); // user input to select patient object (values, data types, operations)
+patientIndex = Number(input.question("Enter number of paitent: ")); // user input to select patient object (values, data types, operations)
 
 while (!Number(patientIndex)) {
     patientIndex = Number(input.question("Enter the NUMBER of paitent: ")); // user input to select patient index (values, data types, operations)

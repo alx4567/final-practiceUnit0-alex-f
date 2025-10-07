@@ -56,6 +56,7 @@ else
 
 
 
+
 let patients = [
     {
         id: "Fido Riggs", 
@@ -63,11 +64,20 @@ let patients = [
         weight: 20, 
         activityLevel: "high", 
         calculations: {
-            rer: 1200, 
-            refeeding: 12
+        }
+    },
+    {
+        id: "Ozzie Fore", 
+        age: 13,  
+        activityLevel: "low", 
+        calculations: {
+            rer: 1100, 
+            refeeding: 13
         }
     }
 ]; // create array for patients (Building Arrays)
+
+/* --------------
 
 let patientName = input.question("Name of patient: "); // gets patient name from user (Values, Data Types and Operations)
 let patientExists = false; // (Values, Data Types, and Operations)
@@ -142,6 +152,7 @@ patientExists = false; // returns patientExists back to false for new entry
 
 console.log(patients); // logs patients array
 
+------------ */
 
 
 /* DOG FOOD PROFILE
@@ -164,6 +175,14 @@ else
     else
         log "Have a nice day."
 */
+
+
+
+/* --------------
+
+
+console.log("\n\n NEW FEATURE \n\n"); // spacer for new feature
+
 
 let diets = [
     { brand: "hills", diet: "puppy chicken flavor", kcals: 2 },
@@ -201,7 +220,7 @@ if (!foodExists) {
         console.log(diets[diets.length - 1]); // logs added diet (using arrays) 
     } else {
         console.log("Food not added."); // stringing characters togethers
-    }
+    } // (control structure and logic)
 
     
     
@@ -209,7 +228,7 @@ if (!foodExists) {
 
 console.log(diets); // lists all diets
 
-
+--------- */
 
 /* 
     Resting Energy Requirement (RER) Calculator = 70 * (patient weight)^.75 = _____ kcal/day
@@ -229,7 +248,58 @@ console.log(diets); // lists all diets
 */
 
 
+console.log("\n\n NEW FEATURE \n\n"); // spacer for new feature
 
+
+let calcWeight;
+let newRer;
+
+/* ---------
+console.log("RER Calculator: List of Patients");
+for ( i = 0; i <= patients.length; i++ ) {
+    if (patients[i]) {
+        console.log(`${i + 1}. ${patients[i].id}`); // logs index and id of each dog (stringing characters together) 
+    } else {
+        console.log(`${i + 1}. Patient not in system`); // logs 'not in system' option (stringing characters together) 
+    } // checks if patient exists. if not adds final option
+} // Loops through each patient in patients array plus an extra (control structure and logic)
+
+let patientIndex = input.question("Please select a patient for calculations (use number): "); // user input to select patient (Values, Data Type, and Operations) (stringing characters together) 
+
+while (!Number(patientIndex)) {
+    patientIndex = input.question("Please select by using the number before the patient's name: "); // user input to select patient (Values, Data Type, and Operations) (stringing characters together) 
+} // checks if input is a number. Reprompts if not (control structure and logic)
+
+let calcPatient = patients[patientIndex - 1]; // assigns patient object to calcPatient (Values, Data Type, and Operations)
+console.log(calcPatient); // logs selected patients data
+
+if (calcPatient && Number(calcPatient.weight)) { // checks if patient exists and has a number weight
+    newRer = 70 * Math.pow(calcPatient.weight, .75); // rer calculation (Values, Data Type, and Operations)
+    
+} else if (calcPatient && (!Number(calcPatient.weight) || !calcPatient.weight)) { // checks if patient exists but weight is either not entered or not a number
+    calcPatient.weight = Number(input.question("Patient's weight (kg): ")); // user input for weight (Values, Data Type, and Operations)
+    while (!Number(calcPatient.weight)) {
+        calcWeight = input.question("Only enter the weight number: "); // user input to select patient (Values, Data Type, and Operations) (stringing characters together) 
+    } //(control structure and logic)
+    newRer = 70 * Math.pow(calcPatient.weight, .75); // rer calculation (Values, Data Type, and Operations)
+    // console.log(calcPatient); // weight should appear in patients object info (Values, Data Type, and Operations)
+} else {
+        calcWeight = input.question("Patient's weight (kg): "); // user input to select patient (Values, Data Type, and Operations) (stringing characters together) 
+        while (!Number(calcWeight)) {
+            calcWeight = input.question("Only enter the weight number: "); // user input to select patient (Values, Data Type, and Operations) (stringing characters together) 
+        } //(control structure and logic)
+        newRer = 70 * Math.pow(calcWeight, .75); // rer calculation (Values, Data Type, and Operations)
+}
+
+if (calcPatient) {
+    calcPatient.calculations.rer = newRer; // assigned new value to patient's rer
+    console.log(`RER: ${newRer} kcal/day`); // log newRer (Values, Data Type, and Operations) (stringing characters together) 
+    // console.log(calcPatient.calculations); // tests if value is put into calculations object of patient (creating and using objects)
+} else {
+    console.log(`RER: ${newRer} kcal/day`); // log newRer (Values, Data Type, and Operations) (stringing characters together) 
+}
+
+------------/
 
 /* 
     Refeeding Calculator = ((user input percentage) * RER) / 24 = ____ mil/hr
@@ -254,6 +324,88 @@ console.log(diets); // lists all diets
             add refeeding key to patient calculation's and as newRefeed to value;
             log "(Patient id)'s refeeding: _____ mil/hr"
     else
-    
-
 */
+
+
+/* -----------
+
+console.log("\n\n NEW FEATURE \n\n"); // spacer for new feature
+
+
+let newRefeed;
+let calcRer;
+
+console.log("Refeeding Calculator: List of Patients");
+for ( i = 0; i <= patients.length; i++ ) {
+    if (patients[i]) {
+        console.log(`${i + 1}. ${patients[i].id}`); // logs index and id of each dog (stringing characters together) 
+    } else {
+        console.log(`${i + 1}. Patient not in system`); // logs 'not in system' option (stringing characters together) 
+    } // checks if patient exists. if not adds final option
+} // Loops through each patient in patients array plus an extra (control structure and logic)
+
+patientIndex = input.question("Please select a patient for calculations (use number): "); // user input to select patient (Values, Data Type, and Operations) (stringing characters together) 
+
+while (!Number(patientIndex)) {
+    patientIndex = input.question("Please select by using the number before the patient's name: "); // user input to select patient (Values, Data Type, and Operations) (stringing characters together) 
+} // checks if input is a number. Reprompts if not (control structure and logic)
+
+calcPatient = patients[patientIndex - 1]; // assigns patient object to calcPatient (Values, Data Type, and Operations)
+console.log(calcPatient); // logs selected patients data
+
+let rerPercentage = Number(input.question("RER Percentage: ")); // user input for RER percentage (Values, Data Type, and Operations)
+while (!Number(rerPercentage)) {
+    rerPercentage = Number(input.question("RER percentage must be a number. Do not inlcude units: "));
+} // checks if rerPercentage is a number, loops until true (control structure and logic)
+
+if (calcPatient && Number(calcPatient.calculations.rer)) { // checks if patient exists and has a number weight
+    newRefeed = ((rerPercentage * calcPatient.calculations.rer) / 24) / 100;
+} else if (calcPatient && (!Number(calcPatient.calculations.rer) || !calcPatient.calculations.rer)) { // checks if patient exists but weight is either not entered or not a number
+    calcPatient.calculations.rer = Number(input.question("Patient's RER: ")); // user input for patient's rer value (Values, Data Type, and Operations)
+    while (!Number(calcPatient.calculations.rer)) {
+        calcPatient.calculations.rer = input.question("RER must be a number. Do not include units: "); //  Values, Data Type, and Operations) (stringing characters together) 
+    } // loops until rer is a number (control structure and logic)
+    newRefeed = ((rerPercentage * calcPatient.calculations.rer) / 24) / 100;
+} else {
+    calcRer = Number(input.question("Patient's RER: ")); // user input for patient's rer value (Values, Data Type, and Operations)
+    while (!Number(calcRer)) {
+        calcRer = input.question("RER must be a number. Do not include units: "); //  (Values, Data Type, and Operations) (stringing characters together) 
+    } // loops until rer is a number (control structure and logic)
+    newRefeed = ((rerPercentage * calcRer) / 24) / 100; // calculation refeed value (Values, Data Type, and Operations)
+}
+
+if (calcPatient) {
+    calcPatient.calculations.refeeding = newRefeed; // assigned new refeed calculation to patient
+    console.log(calcPatient); // shows current patient object;
+    console.log(`${calcPatient.id}'s ${calcPatient.calculations.refeeding} mil/hr`); // logs refeed from patient object
+} else {
+    console.log(`Patient's Reffed: ${newRefeed} mil/hr`); // logs new refeed if patient doesn't exist
+}
+
+--------- */
+
+
+/* Export Patient Profile
+    display patients
+    have user select patient
+    log patient object
+*/
+
+console.log("\n\n NEW FEATURE \n\n"); // spacer for new feature
+
+
+let currentPatient; // delete this
+
+console.log("List of Patients:");
+for ( i = 0; i < patients.length; i++ ) {
+     console.log(`${i + 1}. ${patients[i].id}`); // logs index and id of each dog (stringing characters together)
+} // Loops through each patient in patients array (control structure and logic)
+
+let patientIndex = Number(input.question("Enter number of paitent: ")); // user input to select patient object (values, data types, operations)
+
+while (!Number(patientIndex)) {
+    patientIndex = Number(input.question("Enter the NUMBER of paitent: ")); // user input to select patient index (values, data types, operations)
+} // loops until current patient is a number (control structure and logic)
+
+currentPatient = patients[patientIndex - 1]; // assign patient object to currentPatient variable
+console.log(currentPatient); // test to see if selection is correct

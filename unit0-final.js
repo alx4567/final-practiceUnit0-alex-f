@@ -63,8 +63,8 @@ let patients = [
         weight: 20, 
         activityLevel: "high", 
         calculations: {
-            calc1: 23, 
-            calc2: 45
+            rer: 1200, 
+            refeeding: 12
         }
     }
 ]; // create array for patients (Building Arrays)
@@ -118,7 +118,7 @@ if (patientExists) {
         console.log("No changes were made,");
     }
 } else {
-    console.log(`Patient does not exist. Let's create a profile for ${currentPatient}`); // (Values, Data Types and Operations)
+    console.log(`Patient does not exist. Let's create a profile for ${patientName}`); // (Values, Data Types and Operations)
     let newAge = Number(input.question("Age: ")); //  (Values, Data Types and Operations)
     while (!Number(newAge)) {
         newAge = Number(input.question("Age must be a number. Please try again.\nAge: ")); // Stringing characters together & Values, Data Types and Operations
@@ -166,8 +166,8 @@ else
 */
 
 let diets = [
-    { brand: "hills", diet: "puppy chicken flavor", kcals: 405 },
-    { brand: "purina", diet: "adult small breed", kcals: 320 }
+    { brand: "hills", diet: "puppy chicken flavor", kcals: 2 },
+    { brand: "purina", diet: "adult small breed", kcals: 1 }
 ]; // array to store diet (building arrays and building objects);
 
 let foodExists = false; // values, data types, and operations
@@ -190,9 +190,9 @@ if (!foodExists) {
     } // checks if answer is yes or no (control structure and logic - while loops)
 
     if (addFood === "yes") {
-        let newCals = Number(input.question("What are the kcal/cup? ")); // values, data types, and operations
+        let newCals = Number(input.question("What are the kcal/mil? ")); // values, data types, and operations
         while (!Number(newCals)) {
-            newCals = input.question("kcal/cup must be a number. What are the kcal/cup? "); // values, data types, and operations
+            newCals = input.question("kcal/cup must be a number. What are the kcal/mil? "); // values, data types, and operations
         } // if answer is not a number asks user for new input (control structure and logic - while loops)
         
         diets.push({brand: foodBrand.toLowerCase(), diet: dietName.toLowerCase(), kcals: newCals}); // create new food object to the end of diets array (using arrays and creating objects)
@@ -211,6 +211,49 @@ console.log(diets); // lists all diets
 
 
 
-/* CALCULATORS
+/* 
+    Resting Energy Requirement (RER) Calculator = 70 * (patient weight)^.75 = _____ kcal/day
+
+    log patient names plus add option for user to select other
+
+    if selected existing patient
+        let newRer = 70 * (patient weight)^.75
+
+        if (patient has RER)
+            patient RER = newRer;
+        else 
+            add rer = newRer to patient's calculations array
+    else
+        readline "Patient's weight (kg):"
+        log (70 * (patient weight)^.75 " kcal/day"
+*/
+
+
+
+
+/* 
+    Refeeding Calculator = ((user input percentage) * RER) / 24 = ____ mil/hr
+
+    log patient names plus add option for user to select other
+    while loop to see if selection is acceptable
+    log "(patient's id)"
+    
+    let percFeed = readline "Percentage of RER: "
+
+    if selected existing patient
+        if (patient has RER && patient has refeeding)
+            (patients refeeding) = ((percFeed) * (patient's rer)) / 24
+            log "(Patient id)'s refeeding: _____ mil/hr"
+        else if (patient has RER && patient doesn't have refeeding)
+            let newRefeed = ((percFeed) * (patient's rer)) / 24
+            add refeeding key to patient calculation's and as newRefeed to value;
+            log "(Patient id)'s refeeding: _____ mil/hr"
+        else
+            let newRer = readline "(patient id)'s RER:"
+            let newRefeed = ((percFeed) * (newRer )) / 24
+            add refeeding key to patient calculation's and as newRefeed to value;
+            log "(Patient id)'s refeeding: _____ mil/hr"
+    else
+    
 
 */
